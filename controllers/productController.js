@@ -19,7 +19,7 @@ const getSingleProduct = asyncHandler(async (req, res) => {
     throw new Error(error.message)
   }
 });
-const updateProduct = async (req, res) => {
+const updateProduct = asyncHandler(async (req, res) => {
   try {
     const { id } = req.params;
     const product = await Products.findByIdAndUpdate(id, req.body);
@@ -33,8 +33,8 @@ const updateProduct = async (req, res) => {
     res.status(500)
     throw new Error(error.message)
   }
-};
-const deleteSingleProduct = async (req, res) => {
+});
+const deleteSingleProduct = asyncHandler(async (req, res) => {
   try {
     const { id } = req.params;
     const product = await Products.findByIdAndDelete(id);
@@ -47,8 +47,8 @@ const deleteSingleProduct = async (req, res) => {
     res.status(500)
     throw new Error(error.message)
   }
-};
-const createProduct = async (req, res) => {
+});
+const createProduct = asyncHandler(async (req, res) => {
   try {
     const product = await Products.create(req.body);
     res.status(200).json(product);
@@ -56,7 +56,7 @@ const createProduct = async (req, res) => {
     res.status(500)
     throw new Error(error.message)
   }
-};
+});
 module.exports = {
   getAllProduct,
   getSingleProduct,

@@ -1,5 +1,4 @@
 const express = require("express");
-const Products = require("../Models/productModel");
 const {
   getAllProduct,
   getSingleProduct,
